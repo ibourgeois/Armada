@@ -1,0 +1,16 @@
+[Unit]
+Description=Nginx
+After=etcd.service
+After=docker.service
+Requires=nginx-discovery@%i.service
+
+[Service]
+TimeoutStartSec=0
+KillMode=none
+ExecStartPre=-/usr/bin/docker kill nginx%i
+ExecStartPre=-/usr/bin/docker rm nginx%i
+ExecStartPre=/usr/bin/docker pull armada/nginx
+ExecStart=/usr/bin/docker run -d --name nginx%i -p 80:80 armada/nginx
+
+[X-Fleet]
+X-Conflicts=nginx@*.service
