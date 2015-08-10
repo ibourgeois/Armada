@@ -9,8 +9,8 @@ TimeoutStartSec=0
 KillMode=none
 ExecStartPre=-/usr/bin/docker kill nginx%i
 ExecStartPre=-/usr/bin/docker rm nginx%i
-ExecStartPre=/usr/bin/docker pull armada/nginx
-ExecStart=/usr/bin/docker run -d --name nginx%i -p 80:80 armada/nginx
+ExecStartPre=/usr/bin/docker pull ibourgeois/nginx
+ExecStart=/usr/bin/docker run -d --name nginx%i -p 80:80 ibourgeois/nginx
 
 [X-Fleet]
 X-Conflicts=nginx@*.service
