@@ -1,0 +1,11 @@
+[Unit]
+Description=Announce Nginx@%i service
+BindsTo=nginx@%i.service
+
+[Service]
+EnvironmentFile=/etc/environment
+ExecStart=/bin/sh -c "while true; do etcdctl set /announce/services/nginx%i ${COREOS_PUBLIC_IPV4}:%i --ttl 60; sleep 45; done"
+ExecStop=/usr/bin/etcdctl rm /announce/services/nginx%i
+
+[X-Fleet]
+X-ConditionMachineOf=nginx@%i.service
