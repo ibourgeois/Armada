@@ -1,4 +1,4 @@
-FROM ubuntu:140.04
+FROM ubuntu:14.04
 MAINTAINER Derek Bourgeois <derek@ibourgeois.com>
 
 RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
