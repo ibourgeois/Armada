@@ -1,4 +1,4 @@
-FROM armada/ubuntu
+FROM ibourgeois/ubuntu
 MAINTAINER Derek Bourgeois <derek@ibourgeois.com>
 
 RUN add-apt-repository -y ppa:nginx/stable
