@@ -1,0 +1,37 @@
+version: 0.1
+log:
+  level: info
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry
+  cache:
+    blobdescriptor: redis
+auth:
+  token:
+    realm: token-realm
+    service: token-service
+    issuer: registry-token-issuer
+    rootcertbundle: /root/certs/bundle
+http:
+  addr: localhost:5000
+  prefix: /my/nested/registry/
+  secret: asecretforlocaldevelopment
+  tls:
+    certificate: /path/to/x509/public
+    key: /path/to/x509/private
+    clientcas:
+      - /path/to/ca.pem
+      - /path/to/another/ca.pem
+  debug:
+    addr: localhost:5001
+redis:
+  addr: localhost:6379
+  password: asecret
+  db: 0
+  dialtimeout: 10ms
+  readtimeout: 10ms
+  writetimeout: 10ms
+  pool:
+    maxidle: 16
+    maxactive: 64
+    idletimeout: 300s
